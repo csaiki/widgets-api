@@ -1,0 +1,17 @@
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+	id INT NOT NULL,
+	name CHAR(32) NOT NULL,
+	gravatar CHAR(128) NOT NULL,
+);
+
+DROP TABLE IF EXISTS widgets;
+CREATE TABLE widgets (
+	id INT NOT NULL,
+	name CHAR(32) NOT NULL,
+	color CHAR(32) NOT NULL,
+  price CHAR(32) NOT NULL,
+  inventory CHAR(32) NOT NULL,
+  melts BOOLEAN NOT NULL,
+);
