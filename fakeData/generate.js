@@ -1,6 +1,7 @@
 const faker = require('faker')
 const fs = require('fs')
 const async = require('neo-async')
+const moment = require('moment')
 const argv = process.argv
 const functionToExec = argv[2]
 const numOfItems = argv[3]
@@ -20,11 +21,13 @@ switch (functionToExec) {
 }
 
 function getUserLine (index, name, gravatarId) {
-  return `(${index}, '${name}', 'http://www.gravatar.com/avatar/${gravatarId}?s=64&d=monsterid'),`
+  const date = moment().toISOString()
+  return `(${index}, '${name}', 'http://www.gravatar.com/avatar/${gravatarId}?s=64&d=monsterid', '${date}', , ),`
 }
 
 function getWidgetLine (index, name, color, price, inventory, melts) {
-  return `(${index}, '${name}', '${color}', '${price}', ${inventory}, ${melts}),`
+  const date = moment().toISOString()
+  return `(${index}, '${name}', '${color}', '${price}', ${inventory}, ${melts}, '${date}', , ),`
 }
 
 function genUsers (numOfUsers, cb) {
