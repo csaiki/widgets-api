@@ -10,18 +10,16 @@ import (
 func main() {
 	router := gin.Default()
 
-	usersRoutes := router.Group("/users")
-	{
-		usersRoutes.GET("", src.GetUsers)
-		usersRoutes.GET("/:id", src.GetUserByID)
-	}
+	routes := router.Group("/", gin.BasicAuth(gin.Accounts{
+		"rv": "R3D-V3ntur35"}))
 
-	widgetsRoutes := router.Group("/widgets")
 	{
-		widgetsRoutes.GET("", src.GetWidgets)
-		widgetsRoutes.POST("", src.AddWidgets)
-		widgetsRoutes.GET(":id", src.GetWidgetByID)
-		widgetsRoutes.PUT(":id", src.UpdateWidgetByID)
+		routes.GET("users", src.GetUsers)
+		routes.GET("users/:id", src.GetUserByID)
+		routes.GET("widgets", src.GetWidgets)
+		routes.POST("widgets", src.AddWidgets)
+		routes.GET("/widgets/:id", src.GetWidgetByID)
+		routes.PUT("/widgets/:id", src.UpdateWidgetByID)
 	}
 
 	router.Run(":8080")
