@@ -124,3 +124,23 @@ func UpdateWidgetByID(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"status": http.StatusOK, "message": "Widget updated successfully!"})
 	// curl -i http://localhost:8080/widgets/99
 }
+
+// AddWidgets is responsible for returning the specified user
+func AddWidgets(c *gin.Context) {
+	// Connection to the database
+	db := InitDb()
+	db.LogMode(true)
+
+	// Close connection database
+	defer db.Close()
+
+	var widgets []Widget
+	c.Bind(&widgets)
+
+	for _, widget := range widgets {
+		db.Create(&widget)
+	}
+	c.JSON(http.StatusOK, gin.H{"status": http.StatusOK, "message": "Widgets created successfully!"})
+
+	// curl -i http://localhost:8080/widgets/99
+}
