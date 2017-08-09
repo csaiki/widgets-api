@@ -20,23 +20,22 @@ switch (functionToExec) {
   default: displayUsage()
 }
 
-function getUserLine (index, name, gravatarId) {
-  const date = moment().toISOString()
-  return `(${index}, '${name}', 'http://www.gravatar.com/avatar/${gravatarId}?s=64&d=monsterid', '${date}', , ),`
+function getUserLine (name, gravatarId) {
+  const date = moment().format('YYYY-MM-DD')
+  return `('${name}', 'http://www.gravatar.com/avatar/${gravatarId}?s=64&d=monsterid', '${date}'),`
 }
 
-function getWidgetLine (index, name, color, price, inventory, melts) {
-  const date = moment().toISOString()
-  return `(${index}, '${name}', '${color}', '${price}', ${inventory}, ${melts}, '${date}', , ),`
+function getWidgetLine (name, color, price, inventory, melts) {
+  const date = moment().format('YYYY-MM-DD')
+  return `('${name}', '${color}', '${price}', ${inventory}, ${melts}, '${date}'),`
 }
 
 function genUsers (numOfUsers, cb) {
   let users = []
   for (var i = 0; i < numOfUsers; i++) {
-    const index = i + 1
     const name = faker.name.findName()
     const gravatarId = faker.random.alphaNumeric(32)
-    const line = getUserLine(index, name, gravatarId)
+    const line = getUserLine(name, gravatarId)
     users.push(line)
   }
   async.each(users, (user, cbe) => {
@@ -47,14 +46,13 @@ function genUsers (numOfUsers, cb) {
 function genWidgets (numOfWidgets, cb) {
   let widgets = []
   for (var i = 0; i < numOfWidgets; i++) {
-    const index = i + 1
     const name = faker.commerce.productName()
     const color = faker.commerce.color()
     const price = faker.commerce.price()
     const inventory = faker.random.number({min: 0, max: 1000})
     const melts = faker.random.boolean()
 
-    const line = getWidgetLine(index, name, color, price, inventory, melts)
+    const line = getWidgetLine(name, color, price, inventory, melts)
     widgets.push(line)
   }
   async.each(widgets, (widget, cbe) => {
