@@ -39,7 +39,7 @@ paths:
       - "users"
       summary: "Get a single user by Id"
       description: "Returns a single user"
-      operationId: "getUserById"
+      operationId: "getUserByID"
       produces:
       - "application/json"
       parameters:
@@ -105,8 +105,8 @@ paths:
     get:
       tags:
       - "widgets"
-      summary: "Get a single widget by Id"
-      operationId: "getWidgetById"
+      summary: "Get a single widget by ID"
+      operationId: "getWidgetByID"
       produces:
       - "application/json"
       parameters:
@@ -126,9 +126,9 @@ paths:
     put:
       tags:
       - "widgets"
-      summary: "Updates a widget based on its Id"
+      summary: "Updates a widget based on its ID"
       description: ""
-      operationId: "updateWidget"
+      operationId: "UpdateWidgetByID"
       consumes:
       - "application/json"
       produces:
