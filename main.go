@@ -19,7 +19,7 @@ func main() {
 	widgetsRoutes := router.Group("/widgets")
 	{
 		widgetsRoutes.GET("", src.GetWidgets)
-		widgetsRoutes.POST("", src.AddWigets)
+		widgetsRoutes.POST("", src.AddWidgets)
 		widgetsRoutes.GET(":id", src.GetWidgetByID)
 		widgetsRoutes.PUT(":id", src.UpdateWidgetByID)
 	}
