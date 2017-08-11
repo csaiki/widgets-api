@@ -11,7 +11,7 @@ func main() {
 	router := gin.Default()
 
 	routes := router.Group("/", gin.BasicAuth(gin.Accounts{
-		"rv": "R3D-V3ntur35"}))
+		"chris": "1234"}))
 
 	{
 		routes.GET("users", src.GetUsers)
