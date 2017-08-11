@@ -10,6 +10,7 @@ import (
 // InitDb connects to a MySQL database
 func InitDb() *gorm.DB {
 	var host string
+	// If the application is running inside docker it should connect to a different tcp connection
 	if os.Getenv("DOCKER") == "true" {
 		host = "tcp(db:3306)"
 	} else {
