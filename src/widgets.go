@@ -94,7 +94,6 @@ func GetWidgetByID(c *gin.Context) {
 	// Display JSON result
 	c.JSON(200, _widget)
 
-	// curl -i http://localhost:8080/widgets/99
 }
 
 // UpdateWidgetByID is responsible for returning the specified user
@@ -122,7 +121,6 @@ func UpdateWidgetByID(c *gin.Context) {
 	db.Model(&widget).Updates(updatedWidget)
 
 	c.JSON(http.StatusOK, gin.H{"status": http.StatusOK, "message": "Widget updated successfully!"})
-	// curl -i http://localhost:8080/widgets/99
 }
 
 // AddWidgets is responsible for returning the specified user
@@ -142,5 +140,4 @@ func AddWidgets(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{"status": http.StatusOK, "message": "Widgets created successfully!"})
 
-	// curl -i http://localhost:8080/widgets/99
 }
